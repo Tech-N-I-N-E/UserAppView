@@ -36,12 +36,12 @@ setupIonicReact();
 
 const App: React.FC = () => {
   const [session, setSession] = useState<Session | null>(null);
-  useEffect(() => {
-    setSession(supabase.auth.session());
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-  }, [session]);
+  // useEffect(() => {
+  //   setSession(supabase.auth.session());
+  //   supabase.auth.onAuthStateChange((_event, session) => {
+  //     setSession(session);
+  //   });
+  // }, [session]);
   return (
     <IonApp>
       <IonReactRouter>
@@ -51,7 +51,7 @@ const App: React.FC = () => {
             exact
             path="/"
             render={() => {
-              return session ? <Redirect to="/home" /> : <LoginPage />;
+              return <Redirect to="/home" />;
             }}
           />
           <Route path="/signUp" component={SignUpPage} exact={true} />
